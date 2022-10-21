@@ -7,6 +7,7 @@ void solve()
     int n;
     cin >> n;
     int arr[n];
+    cout<<"enter array element\n";
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
@@ -34,6 +35,7 @@ void solve()
 int main()
 {
     int t;
+    cout<<"enter number of test cases\n";
     cin >> t;
     while (t--)
     {
