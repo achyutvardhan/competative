@@ -12,29 +12,17 @@ using namespace std;
  
  
 void solve(){
-    int n,y;
-    cin>> n>>y;
-    int bit=0;
-    vector<int> v(n);
-    for (auto i = 0; i < n; i++)
+    int x,y;
+    cin>>x>>y;
+    int ans = y/x;
+    if (x>y)
     {
-        cin>>v[i];
-        bit = bit|v[i];
+        cout<<"0"<<endl;
+    }else 
+    {
+       cout<<ans<<endl;
     }
     
-    for (auto i = 0; i < 32; i++)
-    {
-        if ((bit&(1ll<<i))&& !(y&(1ll<<i)))
-        {
-           cout<<"-1"<<endl;
-           break;
-        }else{
-            
-        }
-        
-    }
-    
-   
 }
  
  

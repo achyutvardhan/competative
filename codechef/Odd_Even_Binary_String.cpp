@@ -12,29 +12,28 @@ using namespace std;
  
  
 void solve(){
-    int n,y;
-    cin>> n>>y;
-    int bit=0;
+    int n;
+    cin>>n;
     vector<int> v(n);
+    int count_zero =0;
+    int count_one =0;
     for (auto i = 0; i < n; i++)
     {
-        cin>>v[i];
-        bit = bit|v[i];
+       cin>>v[i];
+       if (v[i]==0)
+       {
+        count_zero++;
+       }else
+       count_one++;
+       
     }
-    
-    for (auto i = 0; i < 32; i++)
+    if (count_zero %2==0&&(n-count_one)%2==0)
     {
-        if ((bit&(1ll<<i))&& !(y&(1ll<<i)))
-        {
-           cout<<"-1"<<endl;
-           break;
-        }else{
-            
-        }
-        
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
     }
     
-   
 }
  
  
