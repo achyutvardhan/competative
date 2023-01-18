@@ -28,10 +28,10 @@ void solve(){
         {
            cout<<"-1"<<endl;
            break;
-        }else{
-            
+        }else if(!(bit&(1ll<<i))&&(y&(1ll<<i)))
+        {
+            bit = bit|
         }
-        
     }
     
    
