@@ -12,28 +12,23 @@ using namespace std;
  
  
 void solve(){
-    int n,y;
-    cin>> n>>y;
-    int bit=0;
-    vector<int> v(n);
+    int n;
+    cin>>n;
+    vector <int> v(n);
     for (auto i = 0; i < n; i++)
     {
-        cin>>v[i];
-        bit = bit|v[i];
+        int temp;
+        cin>>temp;
+        v[i]=abs(temp);  
     }
-    
-    for (auto i = 0; i < 32; i++)
+    sort(v.begin(),v.end());
+    if ((v[0]-1)<0)
     {
-        if ((bit&(1ll<<i))&& !(y&(1ll<<i)))
-        {
-           cout<<"-1"<<endl;
-           break;
-        }else if(!(bit&(1ll<<i))&&(y&(1ll<<i)))
-        {
-        }
-    }
+        cout<<"-1"<<endl;
+    }else
+    cout<<v[0]-1<<endl;
     
-   
+    
 }
  
  

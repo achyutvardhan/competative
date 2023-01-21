@@ -12,28 +12,9 @@ using namespace std;
  
  
 void solve(){
-    int n,y;
-    cin>> n>>y;
-    int bit=0;
-    vector<int> v(n);
-    for (auto i = 0; i < n; i++)
-    {
-        cin>>v[i];
-        bit = bit|v[i];
-    }
-    
-    for (auto i = 0; i < 32; i++)
-    {
-        if ((bit&(1ll<<i))&& !(y&(1ll<<i)))
-        {
-           cout<<"-1"<<endl;
-           break;
-        }else if(!(bit&(1ll<<i))&&(y&(1ll<<i)))
-        {
-        }
-    }
-    
-   
+    int a,b;
+    cin>>a>>b;
+    cout<<a-__gcd(b,a)<<endl;
 }
  
  
