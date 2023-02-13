@@ -19,31 +19,29 @@ using namespace std;
  
 void solve(){
     ll n;
+    cin>>n;
     vll v(n);
-    ll eve =0;
-    ll odd =0;
-    f(i,0,n){
-        cin>>v[i];
-        if (v[i]==2)
-        eve++;
-        else
-        odd++;
-    }
-    ll ans =1;
-    if (eve%2==0)
+    ll sum = 0;
+    f(i,0,n)
     {
-        ll temp = eve;
-       f(i,0,n)
-       {
-          if(v[i]==2&&temp>eve/2)
-          {
-             temp--;
-             ans = i;
-          }
-       }
-       
+        cin >> v[i];
+        sum += v[i] - 1;
     }
-    cout<<ans<<endl;
+    if (sum % 2 == 1)
+    {
+        cout << "-1" << endl;
+        return;
+    }
+    ll s = 0;
+    f(i,1,n)
+    {
+        s += v[i - 1] - 1;
+        if (s == sum / 2)
+        {
+            cout << i << endl;
+            return;
+        }
+    }
     
 }
  
