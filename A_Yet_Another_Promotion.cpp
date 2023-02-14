@@ -21,7 +21,7 @@ void solve()
     ll a, b, req_pot, min_pot_first;
     cin >> a >> b >> req_pot >> min_pot_first;
 
-    if (min_pot_first == req_pot)
+    if (min_pot_first >= req_pot)
     {
         cout << min(a * req_pot, b * req_pot) << endl;
         return;
@@ -37,7 +37,7 @@ void solve()
     }
     else if (req_pot != 0)
     {
-        total_coin_a += req_pot * b;
+        total_coin_a += req_pot * min(b, a);
     }
 
     cout << min(total_coin_a, total_coin_b) << endl;
