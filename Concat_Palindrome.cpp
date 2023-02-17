@@ -24,10 +24,50 @@ void solve()
     string b;
     cin >> a >> b;
     map<char, int> m1;
-    map<char,int> m2;
-    f(i,0,n)
-    {
 
+    if (m > n)
+    {
+        swap(a, b);
+        swap(m, n);
+    }
+
+    f(i, 0, n)
+        m1[a[i]]++;
+
+    f(i, 0, m)
+        m1[b[i]]++;
+
+    ll cot = 0;
+    for (char a = 'a'; a < 'a' + 24; ++a)
+    {
+        if (m1[a] % 2 != 0)
+        {
+            cot++;
+        }
+    }
+    if (cot > 1)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+
+    if (m == n)
+    {
+        sort(a.begin(), a.end());
+        sort(b.begin(), b.end());
+
+        f(i, 0, n)
+        {
+            if (a[i] != b[i])
+            {
+                cout << "NO" << endl;
+                return;
+            }
+        }
+    }
+    else
+    {
+        
     }
 }
 
