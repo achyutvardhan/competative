@@ -5,8 +5,8 @@ using namespace std;
 #define r(i, a, b) for (ll i = a; i > b; i--)
 #define vll vector<ll>
 #define mll map<ll, ll>
+#define mp map<pair<ll, ll>, ll>
 #define pll pair<ll, ll>
-#define mp map<pll, ll>
 ///.........Bit_Manipulation...........///
 #define MSB(mask) 63 - __builtin_clzll(mask) /// 0 -> -1
 #define LSB(mask) __builtin_ctzll(mask)      /// 0 -> 64
@@ -18,35 +18,41 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vll v(n);
-    f(i, 0, v.size())
-            cin >>v[i];
-    sort(v.begin(),v.end(),greater<ll>());
-    ll co =0;
-    f(i,0,n)
+    ll n, m;
+    cin >> n >> m;
+    ll clicks = 0;
+    ll click2 = -1;
+    if (m <= n)
     {
-        f(j,i+1,n)
-        {
-         ll result =  __gcd(v[i],2*v[j]);
-         if (result >1)
-         {
-            co++;
-         }
-         
-        }
+        cout << n - m << endl;
     }
-    cout<<co<<endl;
-    // cout<<endl;
+    else
+    {
+        ll ans = INT_MAX;
+        for (int i = n; i > 0; i--)
+        {
+            click2++;
+            clicks = 0;
+            ll temp = i;
+            while (temp < m)
+            {
+                temp *= 2;
+                clicks++;
+            }
+            ll big = temp - m;
+            clicks += big;
+            clicks+=click2;
+            ans = min(ans, clicks);
+        }
+        cout << ans << endl;
+    }
 }
 
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
-    int t;
-    cin >> t;
+    int t = 1;
     while (t--)
     {
         solve();

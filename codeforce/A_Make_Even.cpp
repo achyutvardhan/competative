@@ -20,25 +20,44 @@ void solve()
 {
     ll n;
     cin >> n;
-    vll v(n);
-    f(i, 0, v.size())
-            cin >>v[i];
-    sort(v.begin(),v.end(),greater<ll>());
-    ll co =0;
-    f(i,0,n)
+    string str = to_string(n);
+    ll pos = 0;
+    ll Lastdigit = str[str.size()-1] - '0';
+    if (Lastdigit % 2 == 0)
     {
-        f(j,i+1,n)
-        {
-         ll result =  __gcd(v[i],2*v[j]);
-         if (result >1)
-         {
-            co++;
-         }
-         
-        }
+        cout << 0 << endl;
+        return;
     }
-    cout<<co<<endl;
-    // cout<<endl;
+    else
+    {
+        ll cou = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            ll digit = str[i] - '0';
+            if (digit % 2 == 0)
+            {
+                pos = i + 1;
+                break;
+            }else{
+                cou++;
+            }
+        }
+        if (cou == str.size())
+        {
+           cout<<-1<<endl;
+            return;
+        }
+        
+        if (pos==1)
+        {
+            cout<<1<<endl;
+        }else
+        {
+            cout<<2<<endl;
+        }
+        
+        
+    }
 }
 
 int main()

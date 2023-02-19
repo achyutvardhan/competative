@@ -20,25 +20,16 @@ void solve()
 {
     ll n;
     cin >> n;
-    vll v(n);
-    f(i, 0, v.size())
-            cin >>v[i];
-    sort(v.begin(),v.end(),greater<ll>());
-    ll co =0;
-    f(i,0,n)
+    string str;
+    cin >> str;
+    ll op_co = 0;
+    f(i, 0, n/2)
     {
-        f(j,i+1,n)
+        if (str[i] == '(')
         {
-         ll result =  __gcd(v[i],2*v[j]);
-         if (result >1)
-         {
-            co++;
-         }
-         
+            op_co++;
         }
     }
-    cout<<co<<endl;
-    // cout<<endl;
 }
 
 int main()

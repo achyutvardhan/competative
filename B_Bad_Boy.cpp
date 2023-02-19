@@ -18,6 +18,7 @@ using namespace std;
  
  
 void solve(){
+    ll n , m ,i ,j;
     
 }
  
