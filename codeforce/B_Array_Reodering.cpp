@@ -16,29 +16,35 @@ using namespace std;
 #define OFFBIT(mask, bit) (mask & ~(1LL << bit))
 #define CHANGEBIT(mask, bit) (mask ^ (1LL << bit))
 
+bool even(ll a, ll b)
+{
+    return (a % 2 == 0 && b % 2 != 0);
+}
 void solve()
 {
     ll n;
     cin >> n;
     vll v(n);
     f(i, 0, v.size())
-            cin >>v[i];
-    sort(v.begin(),v.end(),greater<ll>());
-    ll co =0;
-    f(i,0,n)
+            cin >>
+        v[i];
+    sort(v.begin(), v.end(), even);
+    ll ans = 0;
+
+    f(i, 0, n)
     {
-        f(j,i+1,n)
+        f(j, i + 1, n)
         {
-         ll result =  __gcd(v[i],2*v[j]);
-         if (result >1)
-         {
-            co++;
-         }
-         
+            ll result = __gcd(v[i], 2 * v[j]);
+            if (result>1)
+            {
+                ans++;
+            }
+            
         }
     }
-    cout<<co<<endl;
-    // cout<<endl;
+
+    cout<<ans<<endl;
 }
 
 int main()
