@@ -20,26 +20,23 @@ using namespace std;
 void solve(){
     ll n;
     cin>>n;
-    ll r = n%2020;
     if (n<2020)
     {
         cout<<"NO"<<endl;
         return;
     }
     
-    if (r<=1)
+    while (n%2020!=0)
+    {
+      n-=2021;
+    }
+    if (n%2020==0&&n>=0)
     {
        cout<<"YES"<<endl;
-    }else{
-        if (n%2021!=0)
-        {
-            cout<<"NO"<<endl;
-        }else{
-            cout<<"YES"<<endl;
-        }
-        
     }
-    
+    else{
+        cout<<"NO"<<endl;
+    }
     
 }
  
