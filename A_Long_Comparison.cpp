@@ -21,32 +21,69 @@ void solve()
     ll x1, p1, x2, p2;
     cin >> x1 >> p1;
     cin >> x2 >> p2;
+    ll l1 = to_string(x1).length();
+    ll l2 = to_string(x2).length();
+    string s1 = to_string(x1);
+    string s2 = to_string(x2);
 
-    if (p1%2!=0)
-    {
-        x1*=10;
-        p1--;
-    }
-    
-    if (p2%2!=0)
-    {
-        x2*=10;
-        p2--;
-    }
-    ll val1 = x1 * (ll)(pow(10, p1));
-    ll val2 = x2 * (ll)(pow(10, p2));
-    
-    if (val1 == val2)
-    {
-        cout << "=" << endl;
-    }
-    else if (val1 > val2)
+    if ((l1 + p1) > (l2 + p2))
     {
         cout << ">" << endl;
+        return;
     }
-    else
+    if ((l1 + p1) < (l2 + p2))
     {
         cout << "<" << endl;
+        return;
+    }
+    if ((l1 + p1) == (l2 + p2))
+    {
+        ll c = 0;
+        for (ll i = 0; i < min(l1, l2); i++)
+        {
+            if ((s1[i] - '0') > (s2[i] - '0'))
+            {
+                cout << ">" << endl;
+                c++;
+                break;
+            }
+            if ((s1[i] - '0') < (s2[i] - '0'))
+            {
+                cout << "<" << endl;
+                c++;
+                break;
+            }
+        }
+        if (c == 0)
+        {
+            ll cp = 0;
+            for (ll i = min(l1, l2); i < max(l1, l2); i++)
+            {
+                if (l2 > l1)
+                {
+                    if ((s2[i] - '0') > 0)
+                    {
+                        cout << "<" << endl;
+                        cp++;
+                        break;
+                    }
+                }
+                else
+                {
+                    if ((s1[i] - '0') > 0)
+                    {
+                        cout << ">" << endl;
+                        cp++;
+                        break;
+                    }
+                }
+            }
+            if (cp == 0)
+            {
+                cout << "=" << endl;
+            }
+        }
+        return;
     }
 }
 

@@ -25,19 +25,30 @@ void solve()
         cout << "YES" << endl;
         return;
     }
-
-    ll ans1 = abs(c - b) % a == 0 ? abs(c - b) / a : 0;
-    ll ans3 = abs(b - a) % c == 0 ? abs(b - a) / c : 0;
-    ll ans2 = abs((c - a) / 2) % b == 0 ? abs((c - a) / 2) / b : 0;
-    cout<<ans1<<" "<<ans2<<" "<<ans3<<endl;
-    if (ans1 > 0 || ans2 > 0 || ans3 > 0)
+    if ((a + c) % (2 * b) == 0)
     {
         cout << "YES" << endl;
+        return;
     }
-    else
+    if ((2 * b) - a > 0)
     {
-        cout << "NO" << endl;
+        if (((2 * b) - a) % c == 0)
+        {
+            cout << "YES" << endl;
+            return;
+        }
     }
+    if ((2*b)-c>0)
+    {
+         if (((2 * b )- c) % a == 0)
+        {
+            cout << "YES" << endl;
+            return;
+        }
+    }
+
+    cout<<"NO"<<endl;
+    
 }
 
 int main()
