@@ -21,9 +21,31 @@ void solve()
     ll n;
     cin >> n;
     vll v(n);
+    ll c1 = 0;
+    ll c2 = 0;
     f(i, 0, n)
-            cin >>
-        v[i];
+    {
+        cin >> v[i];
+        if (v[i] == 1)
+            c1++;
+        else
+            c2++;
+    }
+
+    if (c1==n)
+    {
+    cout<<0<<endl;
+    return;
+    }
+    ll count =0;
+    while (c1<c2 || c2%2!=0)
+    {
+        count++;
+        c1++;
+        c2--;
+    }
+    cout<<count<<endl;
+    
 }
 
 int main()
