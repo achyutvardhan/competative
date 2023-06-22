@@ -18,12 +18,36 @@ using namespace std;
  
  
 void solve(){
-   ll n;
-   cin>>n;
+    ll n;
+    cin>>n;
     vll v(n);
+    ll sum=0;
+    ll count =0;
+    vll ind;
     f(i,0,n)
-    cin>>v[i];
-     
+    {
+        cin>>v[i];
+        sum+= abs(v[i]);
+        if(v[i]<0&& ind.empty())
+        {
+            ind.push_back(i);
+        }else if (!ind.empty()&&v[i]<0)
+        {
+            if(ind.back()==i-1)
+            {
+                ind.back()++;
+            }
+            else
+            ind.push_back(i);
+        }else if(!ind.empty() && v[i]==0&&ind.back()==i-1)
+        {
+            ind.back()++;
+        }
+
+    }
+    cout<<sum<<" "<<ind.size()<<endl;
+
+
 }
  
  
