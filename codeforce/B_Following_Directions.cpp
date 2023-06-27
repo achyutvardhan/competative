@@ -18,7 +18,33 @@ using namespace std;
  
  
 void solve(){
-    
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    // u -> (x,y+1)
+    //d-> (x,y-1)
+    //r->(x+1.y)
+    //l ->(x-1,y)
+    int x=0,y=0;
+    f(i,0,s.size())
+    {
+       if(s[i]=='U')
+       y++;
+       else if(s[i]=='D')
+       y--;
+       else if(s[i]=='R')
+       x++;
+       else
+       x--;
+
+       if(x==1&&y==1)
+       {
+        cout<<"YES"<<endl;
+        return;
+       }
+    }
+    cout<<"NO"<<endl;
 }
  
  
