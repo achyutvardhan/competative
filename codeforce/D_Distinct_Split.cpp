@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long int
 #define f(i, a, b) for (ll i = a; i < b; i++)
-#define r(i, a, b) for (ll i = a; i > b; i--)
+#define r(i, a, b) for (ll i = a; i >= b; i--)
 #define vll vector<ll>
 #define mll map<ll, ll>
 #define pll pair<ll, ll>
@@ -21,19 +21,27 @@ void solve()
     ll n;
     string s;
     cin >> n >> s;
-    vector<char> v2;
-    vector<char> v1;
-    map<char, int> m;
-    ll max = 0;
-    ll j = 0;
-    for (; j < n; j++)
-    {
-        if (m.find(s[j]) == m.end())
-        {
-            m[s[j]] = 1;
-            v1.emplace_back(s[j]);
-        }
-    }
+    set<char> v2;
+    vector<int> pre(n,0) , suf(n,0);
+     f(i,0,n)
+     {
+        v2.insert(s[i]);
+        pre[i] = v2.size();
+     }
+     v2.clear();
+     r(i,n-1,0)
+     {
+        v2.insert(s[i]);
+        suf[i]=v2.size();
+     }
+     ll ans =0, maxx=0;
+     f(i,0,n-1)
+     {
+        ans = pre[i]+suf[i+1];
+        maxx= max(maxx , ans);
+     }
+     cout<<maxx<<endl;
+    
 }
 
 int main()
