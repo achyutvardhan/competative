@@ -17,7 +17,16 @@ using namespace std;
 #define CHANGEBIT(mask,bit) (mask^(1LL<<bit))
  
  
-void solve(){}
+void solve(){
+    ll n;
+    cin>>n;
+    vll h(n);
+    f(i,0,n)
+    cin>>h[i];
+    int one =  count(h.begin(),h.end(),1);
+    cout<<n-one/2<<endl; 
+   
+}
  
  
 int main()
