@@ -18,30 +18,25 @@ using namespace std;
  
  
 void solve(){
-    ll n;
-    cin>>n;
-    vll v(n);
+     int n;
+    cin >> n;
+    vll a(n);
     f(i,0,n)
-    cin>>v[i];
-
-    ll ans =0;
-    ll up,np =0;
-    f(i,0,n)
+    cin>>a[i];
+    f(i,0,n-1)
     {
-        if(v[i]==1){
-        up++;
-        if(np==0)
-        ans = max(ans,up);
-        else
-        ans = max(ans , (np+1)/2+up);
-        }
-        else{
-            np += up;
-            up=0;
-            ans = max(ans,(np+2)/2);
+        if(a[i] == 1) a[i]++;
+    }
+    f(i,1,n)
+    {
+        if(a[i] % a[i-1] == 0)
+        {
+            a[i]++;
         }
     }
-    cout<<ans<<endl;
+    f(i,0,n)
+    cout<<a[i]<<" ";
+    cout<<endl;
 }
  
  
