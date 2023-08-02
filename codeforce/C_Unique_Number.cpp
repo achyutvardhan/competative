@@ -25,7 +25,33 @@ using namespace std;
 #define CHANGEBIT(mask,bit) (mask^(1LL<<bit))
  
  
-void solve(){}
+void solve(){
+    ll x ;
+    cin>>x;
+    if(x>45){
+    cout<<-1<<endl;return;}
+    if(x>=1&&x<=9)
+    {
+        cout<<x<<endl;
+        return;
+    }
+    ll val =9;
+    ll ans = 9;
+    r(i,8,0)
+    {
+        if((val+i)<=x)
+        {
+            val+=i;
+            ans= ans*10+i;
+        }
+        
+    }
+    string s = to_string(ans);
+    reverse(s.begin(),s.end());
+    f(i,0,s.length())
+    cout<<s[i];
+    cout<<endl;
+}
  
  
 int main()
