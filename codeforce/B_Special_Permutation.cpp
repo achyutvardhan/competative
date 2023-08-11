@@ -27,64 +27,38 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vll v(n);
-    ll eve = 0;
-    ll odd = 0;
-    ll maxx = 0;
-    f(i, 0, n)
+    ll n, a, b;
+    cin >> n >> a >> b;
+    
+    vll small; //a min
+    vll big;  //b max
+    small.emplace_back(a);
+    big.emplace_back(b);
+    ll i=1;
+    while(big.size()<n/2)
     {
-        cin >> v[i];
-        if (v[i] % 2 != 0 && maxx < v[i])
-        {
-            maxx = v[i];
-            odd++;
-        }
+       if(i!=a&&i!=b)
+       big.emplace_back(i);
+       i++;
     }
-    if (odd == 0)
+    ll en = n;
+    while(small.size()<n/2)
     {
-        ll sum = 0;
-        sort(v.begin(), v.end());
-        f(i, 0, n - 1)
-        {
-            if (v[i] % 2 == 0)
-            {
-                eve += v[i];
-                sum += 1;
-            }
-            else
-            {
-                sum += v[i];
-            }
-        }
-        eve /= 2;
-        v[n - 1] *= pow(2, eve);
-        sum += v[n - 1];
-        cout << sum << endl;
+        if(en!=a&&en!=b)
+        small.emplace_back(en);
+        en--;
     }
-    else
+    ll ma  = *max_element(big.begin(),big.end());
+    ll sm = *min_element(small.begin(),small.end());
+    if(ma!=b||sm!=a)
     {
-        ll sum = 0;
-        f(i, 0, n)
-        {
-            if (v[i] % 2 == 0)
-            {
-                eve += v[i];
-                sum += 1;
-            }
-            else
-            {
-                if (maxx != v[i])
-                    sum += v[i];
-            }
-        }
-        eve /= 2;
-        maxx *= pow(2, eve);
-        sum += maxx;
-        cout << sum << endl;
+        cout<<-1<<endl;
+        return;
     }
-}
+    f(i,0,small.size()) cout<<small[i]<<" ";
+    f(i,0,big.size()) cout<<big[i]<<" ";
+    cout<<endl;
+    }
 
 int main()
 {
