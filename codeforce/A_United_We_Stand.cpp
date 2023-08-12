@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int  
-#define f(i,a,b) for (ll i = a; i <=b; i++)
+#define f(i,a,b) for (ll i = a; i < b; i++)
 #define r(i,a,b) for (ll i = a; i > b; i--)
 #define re(i,a,b) for (ll i = a; i >= b; i--)
 #define vsi vector<string, ll >
@@ -29,22 +29,29 @@ using namespace std;
 void solve(){
     ll n;
     cin>>n;
-    vll v;
-    mll m;
+    vll v(n);
+    f(i,0,n)
+    cin>>v[i];
+    vll b;
+    vll c;
+    ll maxx = *max_element(v.begin(),v.end());
     f(i,0,n)
     {
-        ll x;
-        cin>>x;
-        v.emplace_back(x);
-        m[x]+=1;
+        if(v[i]==maxx)
+        c.emplace_back(v[i]);
+        else
+        b.emplace_back(v[i]);
     }
-    sort(v.begin(),v.end()); 
-    ll j=1;
-    f(i,1,v.size())
+    if(b.size()==0||c.size()==0)
+    cout<<-1<<endl;
+    else
     {
-        
+        cout<<b.size()<<" "<<c.size()<<endl;
+        f(i,0,b.size()) cout<<b[i]<<" ";
+        cout<<endl;
+        f(i,0,c.size()) cout<<c[i]<<" ";
+        cout<<endl;
     }
-
 }
  
  
