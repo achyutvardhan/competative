@@ -27,52 +27,54 @@ using namespace std;
 
 void solve()
 {
+    ll n, q;
+    cin >> n >> q;
     string s;
     cin >> s;
-    if (s[0] == s[s.length() - 1])
+    vector<pll> v(q);
+    f(i, 0, q)
     {
-        cout << "NO" << endl;
-        return;
+        cin >> v[i].first >> v[i].second;
     }
-    map<char, int> m;
-    m[s[0]] = 1;
-    m[s[s.length() - 1]] = 0;
-    char ch;
-    stack<char> s1;
-    f(i, 0, s.length())
+    bool ans = false;
+    // cout << q << endl;
+    f(i, 0, q)
     {
-        if (m.find(s[i]) == m.end())
+        ans =false;
+        ll num = s[v[i].second - 1];
+        f(j, v[i].second, n)
         {
-            m[s[i]] = 1;
-            ch = s[i];
-            // cout<<s[i]<<endl;
+            if (num == s[j])
+            {
+                // cout<<s[j]<<endl;
+                ans = true;
+                break;
+            }
+        }
+        if (ans == true)
+        {
+            cout << "YES" << endl;
+            continue;
         }
 
-        if (m[s[i]] == 1){
-            s1.push(s[i]);}
-        else if(m[s[i]]==0){
-            s1.pop();}
-        // cout<<m['B']<<endl;
+        ll num1 = s[v[i].first - 1];
+        // cout<<num1<<endl;
+        r(j, v[i].first - 2, -1)
+        {
+            if (num1 ==s[j])
+            {
+                // cout<<s[j]<<endl;
+                ans = true;
+                break;
+            }
+        }
+        if (ans == true)
+        {
+            cout << "YES" << endl;
+        }
+        else
+            cout << "NO" << endl;
     }
-    // cout<<s1.size()<<endl;
-    if (s1.empty())
-    {
-        cout << "YES" << endl;
-        return;
-    }
-    stack<char> s2;
-    m[ch] = 0;
-    f(i, 0, s.length())
-    {
-        if (m[s[i]] == 1)
-            s2.push(s[i]);
-        else if (m[s[i]] == 0)
-            s2.pop();
-    }
-    if (s2.empty())
-        cout << "YES" << endl;
-    else
-        cout << "NO" << endl;
 }
 
 int main()
