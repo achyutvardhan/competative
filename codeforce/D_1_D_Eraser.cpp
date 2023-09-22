@@ -27,38 +27,21 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    // cout << 1 << endl;
-    vll v(n);
-    ll sum = 0;
+    ll n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    ll ans = 0;
+    ll i = 0;
     f(i, 0, n)
     {
-        cin >> v[i];
-        // cout << v[i] << endl;
-        sum += v[i];
+        if (s[i] == 'B')
+        {
+            i= i+k-1;
+            ans++;
+        }
     }
-    if (sum == 0)
-    {
-        cout << "NO" << endl;
-        return;
-    }
-    cout << "YES" << endl;
-    ll c0 = count(v.begin(), v.end(), 0);
-    sort(v.begin(), v.end());
-    f(i, 0, n)
-    {
-        if (v[i] != 0)
-            cout
-                << v[i] << " ";
-    }
-
-    f(i, 0, c0)
-    {
-        cout
-            << 0 << " ";
-    }
-    cout << endl;
+    cout << ans << endl;
 }
 
 int main()
