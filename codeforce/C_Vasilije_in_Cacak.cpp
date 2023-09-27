@@ -27,13 +27,17 @@ using namespace std;
  
  
 void solve(){
-    ll n,x;
-    cin>>n>>x;
-    vll v(n);
-    f(i,0,n)
-    cin>>v[i];
-    sort(v.begin(),v.end());
-    
+    ll n ,k,x;
+    cin>>n>>k>>x;
+    ll tsum = (n*(n+1))/2;
+    ll left = n-k;
+    ll lsum = (left * (left+1))/2;
+    ll minsum = (k*(k+1))/2;
+    ll possible = tsum - lsum;
+    if(possible>=x&&minsum<=x)
+    cout<<"YES"<<endl;
+    else
+    cout<<"NO"<<endl;
 }
  
  
