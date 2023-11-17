@@ -26,7 +26,24 @@ using namespace std;
 #define CHANGEBIT(mask,bit) (mask^(1LL<<bit))
  
  
-void solve(){}
+void solve(){
+    ll n;
+    cin>>n;
+    vll v(n);
+    f(i,0,n)
+    cin>>v[i];
+    // max 30 bit
+    // MSB bit should be same;
+    map<ll,ll> m;
+    f(i,0,n)
+    m[MSB(v[i])]++;
+    ll ans =0;
+    for(auto x:m){
+        ll d= x.second;
+        ans+= (d*(d-1))/2;
+    }
+   cout<<ans<<endl;
+}
  
  
 int main()
