@@ -32,12 +32,37 @@ void solve()
     cin >> n;
     vector<vector<int>> v(n, vector<int>(n));
     f(i, 0, n)
-    {
+
         f(j, 0, n)
-                cin >>
-            v[i][j];
+            cin >>v[i][j];
+    vll ans(n,0);
+    re(x, 29, 0)
+    {
+        f(i,0,n)
+        {
+        bool ch = true;
+            f(j,0,n)
+            {
+                if(i==j)continue;
+                if(v[i][j]&(1<<x))continue;
+                else {ch= false; break;}
+            }
+            if(ch)ans[i] = ans[i]|(1<<x); 
+        }
+
     }
-    
+    bool satisfy = true;
+    f(i,0,n)
+    f(j,i+1,n)
+    if(v[i][j]!= (ans[i]|ans[j])){ satisfy =false;break;}
+
+    if(satisfy){cout<<"YES"<<endl;
+    f(i,0,n)
+    cout<<ans[i]<<" ";
+    cout<<endl;
+    }
+    else cout<<"NO"<<endl;
+
 }
 
 int main()
