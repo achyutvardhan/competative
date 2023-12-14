@@ -42,24 +42,17 @@ void solve()
     vll pref(n);
     pref[0] = v[0].first;
     f(i, 1, n) pref[i] = v[i].first + pref[i - 1];
-    vll cnt(n);
+    vll cnt(n );
+    stack<int> s;
     for (ll i = 0; i < n; i++)
     {
-        ll low = n - 1;
-        ll high = 1;
-        ll s = pref[i];
-        while (low >= high)
+        s.push(v[i].second);
+        if(i==n-1||pref[i]<v[i+1].first)
         {
-            int mid = (low + high) / 2;
-            if (s >= v[mid].first)
+            while(!s.empty())
             {
-                cnt[v[i].second] = mid;
-                s = max(s, pref[mid]);
-                low = mid + 1;
-            }
-            else
-            {
-                high = mid - 1;
+                cnt[s.top()] =i;
+                s.pop();
             }
         }
     }
