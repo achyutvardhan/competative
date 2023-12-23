@@ -28,7 +28,22 @@ using namespace std;
  
  
 void solve(){
-    
+    ll n;
+     cin>>n;
+     string s;
+     cin>>s;
+     vector<int> v(27);
+     f(i,0,n)
+     {
+        v[s[i]-'A']++;
+        // cout<<s[i]-'A'<<endl;
+     }
+     ll cnt =0;
+     f(i,0,27)
+     {
+        if(v[i]>=(i+1))cnt++;
+     }
+     cout<<cnt<<endl;
 }
  
  

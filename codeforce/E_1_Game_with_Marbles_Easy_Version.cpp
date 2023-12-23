@@ -3,15 +3,16 @@ using namespace std;
 #define ll long long int  
 #define f(i,a,b) for (ll i = a; i < b; i++)
 #define r(i,a,b) for (ll i = a; i > b; i--)
+#define re(i,a,b) for (ll i = a; i >= b; i--)
+#define vsi vector<string, ll >
 #define fibo(n) (pow(1.618,n)-pow((1-1.618),n))/sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a,b) __gcd(a,b)
 #define lcm(a,b) (1LL*(a/gcd(a,b))*b)
-#define vsi vector<string, ll >
 #define vll vector<ll>
 #define mll map<ll,ll>
-#define mp map<pair<ll,ll>,ll>
 #define pll pair<ll,ll>
+#define mp map<pll,ll>
 #define mi  INT_MAX
 #define CeilDiv(a,b) ((a+b-1)/b)
 #define mod 1000000007
@@ -27,47 +28,30 @@ using namespace std;
  
  
 void solve(){
-ll m;
-cin>>m;
-vector<ll> v;
-vector<ll> vp;
-f(i,0,m)
-{
-    ll t;
-    ll bi;
-    cin>>t;
-    cin>>bi;
-    if(t==1)
-    {
-        ll ans = 1ll<<bi;
-        v.push_back(ans);
-    }
-    else{
-        vp.push_back(bi);
-    }
-}
-for(auto &x: vp)
-{
-    bool  flag  = false;
-    ll n = v.size();
-    for(ll i =0 ;i <n-1;i++)
-    {
-        ll sum =0 ;
-        for(ll j = i; j<n;j++)
-        {
-            sum+=v[j];
-            if(sum==x)
-             {
-                flag = true;
-                break;
-             }
-        }
-        if(flag) break;
-    }
-    if(flag )cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
-}
-
+    ll n ;
+    cin>>n;
+    vll a(n);
+    vll b(n);
+   f(i,0,n)cin>>a[i];
+   f(i,0,n)cin>>b[i];
+   vector<pair<ll,ll>> v(n);
+   f(i,0,n)
+   v[i]= {a[i]+b[i],i};
+   sort(v.begin(),v.end(),greater<pair<ll,ll>>());
+   ll ans =0;
+   int f=1;
+   f(i,0,n)
+   {
+     if(f)
+     {
+        ans+=(a[v[i].second]-1);
+     }else
+     {
+        ans-= (b[v[i].second]-1);
+     }
+     f^=1;
+   }   
+   cout<<ans<<endl;
 
 }
  
@@ -76,7 +60,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0),cout.tie(0);
-     int t=1;
+     int t;
+     cin>>t;
   while(t--){
      solve();
     }
