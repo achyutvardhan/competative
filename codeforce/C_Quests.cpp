@@ -34,25 +34,16 @@ void solve(){
     vll b(n);
     f(i,0,n)cin>>a[i];
     f(i,0,n)cin>>b[i];
-    ll s = a[0];
-    ll maxx = b[0];
-    ll i =1;
-    k--;
-    while(i!=n&&k>0)
+    ll  sum =0;
+    ll mx = INT_MIN;
+    ll ans =INT_MIN;
+    for(int i =0 ;i < min(n,k);i++)
     {
-        if(maxx>a[i])
-        s+=maxx;
-        else{
-            s+=a[i];
-            maxx = max(maxx,b[i]);
-        }
-            i++;
-        k--;
+         sum += a[i];
+         mx = max(mx,b[i]);
+         ans = max(ans, sum+mx*(k-i-1));
     }
-    if(i==n){
-        while(k--)s+=maxx;
-    }
-    cout<<s<<endl;
+    cout<<ans<<endl;
 }
  
  
