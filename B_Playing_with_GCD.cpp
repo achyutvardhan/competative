@@ -15,6 +15,7 @@ using namespace std;
 #define mp map<pll,ll>
 #define mi  INT_MAX
 #define CeilDiv(a,b) ((a+b-1)/b)
+#define fix(prec) {cout << setprecision(prec) << fixed;}
 #define mod 1000000007
 ///.........Bit_Manipulation...........///
 #define bit (1ll<<35)-1
@@ -32,8 +33,10 @@ using namespace std;
  
  
 void solve(){
-    ll x,n;
-    cin>>x>>n;
+    ll n;
+    cin>>n;
+    vll v(n);
+    f(i,0,n)cin>>v[i];
     
 }
  
