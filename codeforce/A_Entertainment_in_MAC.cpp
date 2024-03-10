@@ -37,46 +37,44 @@ void solve()
 {
     ll n;
     cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
-    f(i, 0, n)
+    string s;
+    cin >> s;
+    ll n1 = s.length();
+    if (s[0] <s[n1 - 1])
     {
-
-        if (s1[i + 1] == s2[i]) // 0/1
-        {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
-            break;
-        }
-        j = i;
+            cout << s << endl;
     }
-    // cout<<j<<endl;
-    if (j < n)
+    else if(s[0]>s[n1-1])
     {
-        for (int k = j; k < n; k++)
-        {
-            ans.push_back(s2[k]);
-        }
+            // n-1 reverse
+            re(i, n1 - 1, 0)
+                    cout
+                << s[i];
+            cout << s << endl;
+    }else{
+         ll l =0;
+         ll r = n1-1;
+         while (s[l]==s[r]&&l<=r)
+         {
+            l++;
+            r--;
+         }
+         if(l>=r)
+         cout<<s<<endl;
+         else{
+            if(s[l]>s[r])
+            {
+                re(i, n1 - 1, 0)
+                    cout
+                << s[i];
+                cout << s << endl;
+            }else
+            {
+               cout<<s<<endl;
+            }
+         }
+         
     }
-    cout << ans << endl;
-    cout << ans1 << endl;
 }
 
 int main()

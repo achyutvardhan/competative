@@ -3,16 +3,15 @@ using namespace std;
 #define ll long long int
 #define f(i, a, b) for (ll i = a; i < b; i++)
 #define r(i, a, b) for (ll i = a; i > b; i--)
-#define re(i, a, b) for (ll i = a; i >= b; i--)
-#define vsi vector<string, ll>
 #define fibo(n) (pow(1.618, n) - pow((1 - 1.618), n)) / sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (1LL * (a / gcd(a, b)) * b)
+#define vsi vector<string>
 #define vll vector<ll>
 #define mll map<ll, ll>
+#define mp map<pair<ll, ll>, ll>
 #define pll pair<ll, ll>
-#define mp map<pll, ll>
 #define mi INT_MAX
 #define CeilDiv(a, b) ((a + b - 1) / b)
 #define fix(prec)                            \
@@ -35,56 +34,23 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
-    f(i, 0, n)
-    {
-
-        if (s1[i + 1] == s2[i]) // 0/1
-        {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
-            break;
-        }
-        j = i;
-    }
-    // cout<<j<<endl;
-    if (j < n)
-    {
-        for (int k = j; k < n; k++)
-        {
-            ans.push_back(s2[k]);
-        }
-    }
-    cout << ans << endl;
-    cout << ans1 << endl;
+    ll n, m, a, b;
+    cin >> n >> m >> a >> b;
+    ll ans = 0;
+     if (n % m == 0)
+            ans = min(n * a, (n / m) * b);
+        else{
+            ans = min(n * a, ((n / m) * b + (n % m) * a));
+            ans  = min (ans ,((n / m) * b + b) );
+            }
+    cout<<ans<<endl;
 }
 
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
-    int t;
-    cin >> t;
+    int t = 1;
     while (t--)
     {
         solve();

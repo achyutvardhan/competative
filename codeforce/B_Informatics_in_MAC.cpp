@@ -37,46 +37,43 @@ void solve()
 {
     ll n;
     cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
-    f(i, 0, n)
-    {
+    vll v(n);
+    f(i, 0, n) cin >> v[i];
+    vll prefM(n);
+    vll suffM(n);
+    set<ll> prefix , suff;
+    ll a=0,b =0;
 
-        if (s1[i + 1] == s2[i]) // 0/1
+    f(i,0,n)
+    {
+        prefix.insert(v[i]);
+        while(prefix.count(a))a++;
+        prefM[i]=a;
+    }
+    re(i,n-1,0)
+    {
+        suff.insert(v[i]);
+        while(suff.count(b))b++;
+        suffM[i]=b;
+    }
+    ll in = -1;
+    f(i, 0, n - 1)
+    {
+        if (prefM[i] == suffM[i + 1])
         {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
+            in = i;
             break;
         }
-        j = i;
     }
-    // cout<<j<<endl;
-    if (j < n)
+    if (in == -1)
+        cout << -1 << endl;
+    else
     {
-        for (int k = j; k < n; k++)
-        {
-            ans.push_back(s2[k]);
-        }
+        cout << 2 << endl;
+        cout << 1 << " " << in+1 << endl;
+        cout << in + 2 << " " << n;
+        cout << endl;
     }
-    cout << ans << endl;
-    cout << ans1 << endl;
 }
 
 int main()

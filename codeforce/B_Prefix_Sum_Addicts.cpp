@@ -4,7 +4,7 @@ using namespace std;
 #define f(i, a, b) for (ll i = a; i < b; i++)
 #define r(i, a, b) for (ll i = a; i > b; i--)
 #define re(i, a, b) for (ll i = a; i >= b; i--)
-#define vsi vector<string, ll>
+#define vsi vector<string>
 #define fibo(n) (pow(1.618, n) - pow((1 - 1.618), n)) / sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a, b) __gcd(a, b)
@@ -35,48 +35,30 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
-    f(i, 0, n)
+    ll n, k;
+    cin >> n >> k;
+    vll s(n + 1);
+    f(i, n - k + 1, n + 1) cin >> s[i];
+    if (k == 1)
     {
+        cout << "Yes" << endl;
+        return;
+    }
+    vll arr(n + 1);
+    f(i, n - k + 2, n + 1)
+        arr[i] = s[i] - s[i - 1];
 
-        if (s1[i + 1] == s2[i]) // 0/1
-        {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
-            break;
-        }
-        j = i;
-    }
-    // cout<<j<<endl;
-    if (j < n)
+    if (!is_sorted(arr.begin() + (n - k + 2), arr.end()))
     {
-        for (int k = j; k < n; k++)
-        {
-            ans.push_back(s2[k]);
-        }
+        cout << "NO" << endl;
+        return;
     }
-    cout << ans << endl;
-    cout << ans1 << endl;
+    if (s[n - k + 1] > (n - k + 1) * arr[n - k + 2])
+    {
+        cout << "No" << endl;
+        return;
+    }
+    cout << "Yes" << endl;
 }
 
 int main()

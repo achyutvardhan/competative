@@ -37,46 +37,33 @@ void solve()
 {
     ll n;
     cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
+    string s;
+    cin >> s;
+    vector<char> v(n + 1);
+    vector<char> mark(n + 1, '1');
+
     f(i, 0, n)
     {
+        v[i + 1] = s[i];
+    }
+    ll cost = 0;
 
-        if (s1[i + 1] == s2[i]) // 0/1
-        {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
-            break;
-        }
-        j = i;
-    }
-    // cout<<j<<endl;
-    if (j < n)
+    f(i, 1, n + 1)
     {
-        for (int k = j; k < n; k++)
+        if (v[i] == '0')
         {
-            ans.push_back(s2[k]);
+            for (ll j = i; j < n + 1; j += i)
+            {
+                if (v[j] == '1')
+                    break;
+                if (mark[j] == '0')
+                    continue;
+                mark[j] = '0';
+                cost += i;
+            }
         }
     }
-    cout << ans << endl;
-    cout << ans1 << endl;
+    cout << cost << endl;
 }
 
 int main()

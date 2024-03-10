@@ -4,7 +4,7 @@ using namespace std;
 #define f(i, a, b) for (ll i = a; i < b; i++)
 #define r(i, a, b) for (ll i = a; i > b; i--)
 #define re(i, a, b) for (ll i = a; i >= b; i--)
-#define vsi vector<string, ll>
+#define vsi vector<string>
 #define fibo(n) (pow(1.618, n) - pow((1 - 1.618), n)) / sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a, b) __gcd(a, b)
@@ -37,46 +37,45 @@ void solve()
 {
     ll n;
     cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
-    f(i, 0, n)
+    vll v(n);
+    f(i, 0, n) cin >> v[i];
+    ll l = 0;
+    ll r = n - 1;
+    pair<ll, ll> val;
+    val.first = 1;
+    val.second = n;
+    while (l <= r)
     {
-
-        if (s1[i + 1] == s2[i]) // 0/1
-        {
-            ans1++;
-            ans.push_back(s1[i + 1]);
-        }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
+        if (v[l] != val.first && v[l] != val.second && v[r] != val.first && v[r] != val.second)
             break;
-        }
-        j = i;
-    }
-    // cout<<j<<endl;
-    if (j < n)
-    {
-        for (int k = j; k < n; k++)
+
+        if (v[l] == val.first)
         {
-            ans.push_back(s2[k]);
+            l++;
+            val.first++;
+        }
+        else if (v[l] == val.second)
+        {
+            l++;
+            val.second--;
+        }
+        if (v[r] == val.first)
+        {
+            r--;
+            val.first++;
+        }
+        else if (v[r] == val.second)
+        {
+            r--;
+            val.second--;
         }
     }
-    cout << ans << endl;
-    cout << ans1 << endl;
+    if (l <= r)
+    {
+        cout << l + 1 << " " << r + 1 << endl;
+    }
+    else
+        cout << -1 << endl;
 }
 
 int main()

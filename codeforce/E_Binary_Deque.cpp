@@ -4,7 +4,7 @@ using namespace std;
 #define f(i, a, b) for (ll i = a; i < b; i++)
 #define r(i, a, b) for (ll i = a; i > b; i--)
 #define re(i, a, b) for (ll i = a; i >= b; i--)
-#define vsi vector<string, ll>
+#define vsi vector<string>
 #define fibo(n) (pow(1.618, n) - pow((1 - 1.618), n)) / sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a, b) __gcd(a, b)
@@ -33,50 +33,44 @@ using namespace std;
 // function without recursion
 // auto fun_name = [&](int ind){};
 
+ll query(ll l, ll r, vll &pref)
+{
+    return pref[r] - (l ? pref[l - 1] : 0);
+}
+
 void solve()
 {
-    ll n;
-    cin >> n;
-    string s1 = "";
-    string s2 = "";
-    cin >> s1 >> s2;
-    string ans = "";
-    ll ans1 = 1;
-    ll i = 0;
-    ll j = 0;
-    ans.push_back(s1[0]);
+    ll n, s;
+    cin >> n >> s;
+    vll v(n);
+    f(i, 0, n) cin >> v[i];
+    vll pref(n);
+    pref[0] = v[0];
+    f(i, 1, n) pref[i] = pref[i - 1] + v[i];
+
+    // f(i,0,n)cout<<pref[i]<<" ";
+    // cout<<endl;
+    ll ans = INT_MAX;
     f(i, 0, n)
     {
-
-        if (s1[i + 1] == s2[i]) // 0/1
+        ll pos = -1;
+        ll l = i, r = n - 1;
+        while (l <= r)
         {
-            ans1++;
-            ans.push_back(s1[i + 1]);
+            ll mid = (l + r) / 2;
+            if (query(i, mid, pref) <= s)
+            {
+                pos = mid;
+                l = mid + 1;
+            }
+            else
+                r = mid - 1;
         }
-        if (s1[i + 1] == '0' && s2[i] == '1')
-        {
-            ans1 = 1;
-            ans.push_back('0');
-        }
-        if (s2[i] == '0' && s1[i + 1] == '1')
-        {
-            ans.push_back('0');
-            i++;
-            j = i;
-            break;
-        }
-        j = i;
+        if (pos == -1 || query(i, pos, pref) != s)
+            continue;
+        ans = min(ans, n - (pos - i + 1));
     }
-    // cout<<j<<endl;
-    if (j < n)
-    {
-        for (int k = j; k < n; k++)
-        {
-            ans.push_back(s2[k]);
-        }
-    }
-    cout << ans << endl;
-    cout << ans1 << endl;
+    cout << (ans == INT_MAX ? -1 : ans) << endl;
 }
 
 int main()
