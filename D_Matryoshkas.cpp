@@ -4,7 +4,7 @@ using namespace std;
 #define f(i,a,b) for (ll i = a; i < b; i++)
 #define r(i,a,b) for (ll i = a; i > b; i--)
 #define re(i,a,b) for (ll i = a; i >= b; i--)
-#define vsi vector<string, ll >
+#define vsi vector<string>
 #define fibo(n) (pow(1.618,n)-pow((1-1.618),n))/sqrt(5)
 #define Acon(n) static_cast<char>(n)
 #define gcd(a,b) __gcd(a,b)
@@ -32,12 +32,7 @@ using namespace std;
 // auto fun_name = [&](int ind){};
  
  
-void solve(){
-    ll n;
-    cin>>n;
-    vll v(n);
-    f(i,0,n)cin>>v[i];
-}
+void solve(){}
  
  
 int main()
