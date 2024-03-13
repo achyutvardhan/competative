@@ -33,12 +33,22 @@ using namespace std;
  
  
 void solve(){
-    ll n;
-    cin>>n;
-    vll v(n);
-    f(i,0,n)cin>>v[i];
-    if(n==1){cout<<0<<endl;return;}
-    
+    ll n , m ,k;
+    cin>>n>>m>>k;
+    vll b(n);
+    vll c(m);
+    f(i,0,n)cin>>b[i];
+    f(i,0,m)cin>>c[i];
+    ll cnt =0;
+    f(i,0,n)
+    {
+        f(j,0,m)
+        {
+           if(b[i]+c[j]<=k)
+           cnt++;
+        }
+    }
+    cout<<cnt<<endl;
 }
  
  
