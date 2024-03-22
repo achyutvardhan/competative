@@ -41,23 +41,36 @@ void solve()
 {
     ll n;
     cin >> n;
-    vll v={15, 10, 6, 3, 1};
-    ll ans = INT_MAX;
-    f(i, 0, v.size())
+    vector<pair<ll, ll>> v(n);
+    f(i, 0, n)
     {
-        ll comp = 0;
-        ll temp = n;
-        f(j, i, v.size())
-        {
-            ll c = temp / v[j];
-            if (c == 0)
-                continue;
-            comp += (temp / v[j]);
-            temp = temp % v[j];
-        }
-        ans = min(ans, comp);
+        ll x;
+        cin >> x;
+        v[x].first = x;
+        v[x].second++;
     }
-    cout << ans << endl;
+    ll ans = -1;
+    ll ele = -1;
+    vll single;
+    f(i, 0, n)
+    {
+        ans = v[i].first;
+        if (v[i].second == 0)
+        {
+            ele = i;
+            break;
+        }
+        if (v[i].second == 1)
+            single.push_back(v[i].first);
+    }
+    if (single.size() > 1)
+    {
+        cout << single[1] << endl;
+    }
+    else if (ele != -1)
+        cout << ele << endl;
+    else
+    cout<<ans+1<<endl;
 }
 
 int main()
