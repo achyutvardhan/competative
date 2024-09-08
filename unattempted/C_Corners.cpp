@@ -9,9 +9,7 @@ using namespace std;
 #define Acon(n) static_cast<char>(n)
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (1LL * (a / gcd(a, b)) * b)
-#define fo(v)         \
-    for (auto &x : v) \
-        cin >> x;
+#define fo(v) for (auto &x : v) cin >> x;
 #define vll vector<ll>
 #define mll map<ll, ll>
 #define pll pair<ll, ll>
@@ -19,10 +17,7 @@ using namespace std;
 #define mi INT_MAX
 #define CeilDiv(a, b) ((a + b - 1) / b)
 #define r return
-#define fix(prec)                            \
-    {                                        \
-        cout << setprecision(prec) << fixed; \
-    }
+#define fix(prec) cout << setprecision(prec) << fixed; 
 #define mod 1000000007
 ///.........Bit_Manipulation...........///
 #define bit (1ll << 35) - 1
